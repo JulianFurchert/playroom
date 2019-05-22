@@ -1,5 +1,5 @@
 import exampleVideo from './videos/example.mp4';
-import exampleImage from './videos/example.jpg';
+import exampleImage from './images/example.jpg';
 
 
 export default [
