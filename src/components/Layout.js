@@ -1,44 +1,38 @@
 import React from "react"
-import PropTypes from "prop-types"
-import { StaticQuery, graphql } from "gatsby"
-import Header from "./Header"
+import { useStaticQuery, graphql } from "gatsby"
 
-const Layout = ({ children }) => (
-  <StaticQuery
-    query={graphql`
-      query SiteTitleQuery {
-        site {
-          siteMetadata {
-            title
-          }
+const Layout = ({ children }) => {
+  const data = useStaticQuery(graphql`
+    query HeaderQuery {
+      site {
+        siteMetadata {
+          title
         }
       }
-    `}
-    render={data => (
-      <>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <div
-          style={{
-            margin: `0 auto`,
-            maxWidth: 960,
-            padding: `0px 1.0875rem 1.45rem`,
-            paddingTop: 0,
-          }}
-        >
-          <main>{children}</main>
-          <footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <a href="https://www.gatsbyjs.org">Gatsby</a>
-          </footer>
-        </div>
-      </>
-    )}
-  />
-)
+    }
+  `)
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+  return(
+    <div
+      css={{
+        width: '100vw',
+        height: '100vh'
+      }}
+    >
+      <header>
+        {data.site.siteMetadata.title}
+      </header>
+      <main
+        css={{
+          width: '100%',
+          height: '100%'
+        }}
+      >
+        {children}
+      </main>
+      <footer></footer>
+    </div>
+  )
 }
 
 export default Layout
