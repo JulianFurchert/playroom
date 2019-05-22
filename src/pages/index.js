@@ -1,14 +1,14 @@
 import React from "react"
-
-import Layout from "../components/Layout"
 import SEO from "../components/Seo"
-import Scroll from '../components/Scroll';
+import Header from '../components/Header';
+import Gallery from '../components/Gallery';
 
 const IndexPage = () => (
-  <Layout>
+  <>
     <SEO title="Home" />
-    <Scroll />
-  </Layout>
+    <Header />
+    <Gallery />
+  </>
 )
 
 export default IndexPage
